@@ -4,7 +4,10 @@ This is an implementation of a simple flow to synchronize updated data within Sa
 
 ## Design details
 Trigger events fire on after insert, update and delete of Loan records and enqueue asynchronous job that allows sending 1 callout per 1 record as per requirements.
+
 Queueable was chosen for the convenience of the recursive approach to ensure as many records can be processed as possible, considering the external web server's limitations of accepting just 1 record per callout.
+
+Error logging and exception handling were implemented, storing error messages in field values of records.
 
 ## Assumptions made
 
@@ -12,5 +15,5 @@ Queueable was chosen for the convenience of the recursive approach to ensure as 
 
 ## Key Files
 * LoanIntegrationTrigger - trigger class that fires when records are created, updated or deleted
-* LendingSystemIntegration - trigger handler that calls Queueable (considering it's not a class that calls external server, better to renamed it to LoanIntegrationTriggerHandler for clarity)
+* LendingSystemIntegration - trigger handler that calls Queueable (considering it's not a class that calls the external server, better to rename it to LoanIntegrationTriggerHandler for clarity)
 * LendingProcessorQueueable - asynchronous job for processing Loan records
