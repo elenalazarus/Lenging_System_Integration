@@ -11,6 +11,6 @@ Queueable was chosen for the convenience of the recursive approach to ensure as 
 1. The system will not process more than 5000 records per transaction as max number of enqueued jobs - 50 and max number of processed records per queue due to callout limit - 100
 
 ## Key Files
-LoanIntegrationTrigger - trigger class that fires when records are created, updated or deleted
-LendingSystemIntegration - trigger handler that calls Queueable (considering it's not a class that calls external server, better to renamed it to LoanIntegrationTriggerHandler for clarity)
-LendingProcessorQueueable - asynchronous job for processing Loan records
+* LoanIntegrationTrigger - trigger class that fires when records are created, updated or deleted
+* LendingSystemIntegration - trigger handler that calls Queueable (considering it's not a class that calls external server, better to renamed it to LoanIntegrationTriggerHandler for clarity)
+* LendingProcessorQueueable - asynchronous job for processing Loan records
