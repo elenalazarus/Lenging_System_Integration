@@ -9,6 +9,10 @@ Queueable was chosen for the convenience of the recursive approach to ensure as 
 
 Error logging and exception handling were implemented, storing error messages in field values of records.
 
+Additional fields were added on the Loan record to avoid extra queries of parent Account records (Account_Number__c formula field referencing Account.AccountNumber) and manage error handling (Stack_Trace__c)
+
+Custom settings TriggerExecution__c allows deactivation of the trigger in case of a bulk load of old loan records to Salesforce
+
 ## Assumptions made
 
 1. The system will not process more than 5000 records per transaction as max number of enqueued jobs - 50 and max number of processed records per queue due to callout limit - 100
